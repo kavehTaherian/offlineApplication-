@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offline App </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="bower_components/offline/themes/offline-theme-chrome.css">
+    <link rel="stylesheet" href="bower_components/offline/themes/offline-language-english.css">
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css">
+    <link rel="stylesheet" href="client/styles/main.css">
+</head>
+<body class="container">
+    <h5>Hello World</h5>
+    <div class="alert offline alert-danger">Offline</div>
+    <div class="alert online alert-success">Online</div>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/offline/offline.js"></script>
+    <script src="bower_components/offlinejs-simulate-ui/offline-simulate-ui.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    
+
+    <script type="text/javascript">
+        $(function () {
+           toastr.success('Welcome','first incoming Message');
+            var $offline = $('.offline'),
+                $online = $('.online');
+
+            Offline.on('confirmed-down',function () {
+                $online.fadeOut(function () {
+                    $offline.fadeIn();
+                });
+            });
+            Offline.on('confirmed-up',function () {
+                $offline.fadeOut(function () {
+                   $online.fadeIn();
+                });
+            });
+           Offline.check();
+        });
+    </script>
+</body>
+</html>
