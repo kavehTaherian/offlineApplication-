@@ -1,0 +1,16 @@
+//
+   Created by Kaveh T a h e r i a n on 12/08/2017.
+
+extends shared/layout
+block contents
+    h6= title
+    table(class='table table-striped table-hover')
+        thead
+            tr
+             th Feature
+             th Value
+        tbody
+            each val,index in info
+                tr
+                  td=index
+                  td=val

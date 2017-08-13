@@ -1,0 +1,23 @@
+//
+   Created by Kaveh T a h e r i a n on 31/07/2017.
+
+extends shared/layout
+block contents
+    form.form-horizontal(method="POST",action="/account/signin")
+        fieldset
+            legend Sign-In
+            .form-group
+                label.col-lg-2.control-label(for='userName') UserName
+                .col-lg-10
+                    input#userName.form-control(type='text',placeholder='username',name="email")
+            .form-group
+                label.col-lg-2.control-label(for='password') Password
+                .col-lg-10
+                    input#password.form-control(type='password',placeholder='password',name="password")
+                    .checkbox
+                        label
+                            input(type='checkbox',name="rememberMe")
+                            |  rememberMe
+            .form-group
+                .col-lg-10.col-lg-offset-2
+                    input.btn.btn-primary(type='submit',value="login")

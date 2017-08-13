@@ -4,6 +4,11 @@
 
 module.exports = function (app) {
     app.use('/',require('./lib/home')());
+    app.use('/',require('./lib/signup')());
+    app.use('/',require('./lib/signin')());
+    app.use('/',require('./lib/users')());
+    app.use('/',require('./lib/systeminfo')());
+    app.use('/',require('./lib/logout')());
     app.use('*',require('./lib/404')());
     app.use('*',require('./lib/500')());
 };

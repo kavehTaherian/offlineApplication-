@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'billabongregular';
+    src: url('../fonts/billabong-webfont.eot');
+    src: url('../fonts/billabong-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/billabong-webfont.woff') format('woff'),
+    url('../fonts/billabong-webfont.ttf') format('truetype'),
+    url('../fonts/billabong-webfont.svg#billabongregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.navbar {
+    border-radius: 0px;
+}
+.navbar-brand{
+    font-family: 'billabongregular';
+}
+body {
+    background: #f5f5f5;
+    color: #565a5c;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.alert{
+    display: none;
+}
+.systemInfo{
+    display: none;
+}

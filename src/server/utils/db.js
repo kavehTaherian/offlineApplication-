@@ -7,7 +7,6 @@ var _ = require('lodash'),
     models = require('./models');
 var Db = function (args) {
     var self = this;
-
     self.init= function () {
         var defer = Q.defer();
         mongoose.connect(args.uri,args.options,function (error) {

@@ -4,10 +4,9 @@
 var _= require('lodash'),
     assert = require('assert'),
     async = require('async'),
-    AuthApp = require('../utils/AuthenticationApplication');
-
+    AuthApp = require('../utils/authenticationApplication.js');
 var Authentication = function (db) {
-    assert.ok(db,'authentication process need database utilities');
+    assert.ok(db != undefined,'authentication process need database utilities');
     var self= this;
     self.authPath = null;
     // check inputs
@@ -15,7 +14,7 @@ var Authentication = function (db) {
         if(self.authApp.isValid()){
             callback(null,self.authApp);
         }else {
-            var err = new Error('username or password invalid');
+            var err = 'username or password invalid';
             callback(err,null);
         }
     };

@@ -2,7 +2,7 @@
  * Created by Kaveh T a h e r i a n on 22/07/2017.
  */
 var assert = require('assert'),
-    App = require('../utils/RegistrationApplication'),
+    App = require('../utils/registrationApplication.js'),
     async= require('async');
 
 var Registration = function (db) {
@@ -14,7 +14,6 @@ var Registration = function (db) {
      *  check password matched with it's confirmation    *
      ****************************************************/
     var checkInputs= function (callback) {
-        console.log(1);
         if(!self.app.isValid()){
             callback('invalid inputs',null);
         }else{
@@ -23,7 +22,6 @@ var Registration = function (db) {
     };
     // check email does not already exists
     var checkEmailAlreadyExists= function (app, callback) {
-        console.log(2);
         db.User.findOne({ email : app.email },function (err, doc) {
             if(err){
                 callback(err,null);
@@ -38,8 +36,16 @@ var Registration = function (db) {
     };
     // save new user to database
     var insertUser = function (args,callback) {
-        console.log(3);
-        db.User.create(args,function (err, doc) {
+        var _user = {
+            email : args.email,
+            password : args.password,
+            profile : {
+                first_name : args.firstName,
+                last_name : args.lastName,
+                age : args.age
+            }
+        };
+        db.User.create(_user,function (err, doc) {
             if(err) { callback(err,null); }
             else{ callback(null,doc); }
         });
@@ -54,7 +60,7 @@ var Registration = function (db) {
         db.Log.create(_log,function (err, doc) {
             if(err){ callback(err,null); }
             else {
-                callback(null,doc); }
+                callback(null,{ user : user , log :  doc }); }
         });
         // _log.save(function (err) {
         //     if(!err){
@@ -66,13 +72,21 @@ var Registration = function (db) {
     };
     // send proper message to client
     self.startRegistration = function (args,cb) {
+        // var _user = {
+        //     firstName : args.profile.first_name,
+        //     lastName : args.profile.last_name,
+        //     age : args.profile.age,
+        //     email : args.email,
+        //     password : args.password,
+        //     confirm : args.confirm
+        // };
         var _user = {
-            firstName : args.profile.first_name,
-            lastName : args.profile.last_name,
-            age : args.profile.age,
+            firstName : args.firstName,
+            lastName : args.lastName,
             email : args.email,
             password : args.password,
-            confirm : args.confirm
+            confirm : args.confirm,
+            age : args.age
         };
         self.app= new App(_user);
         async.waterfall([
@@ -85,7 +99,7 @@ var Registration = function (db) {
                 return cb(err,null);
             }
             else{
-                return cb(null,true);
+                return cb(null,result);
             }
         });
     };

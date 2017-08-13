@@ -10,9 +10,9 @@ var authenticationApp = function (args) {
     var checkEmail = function () {
         if(!_.isNull(self.email) &&
             !_.isUndefined(self.email) &&
-            !validator.isEmpty(self.email) &&
+            !validator.isEmpty(self.email.toString()) &&
             self.email.length > 1 &&
-            validator.isEmail(self.email)) {
+            validator.isEmail(self.email.toString())) {
             return true;
         }
         else{

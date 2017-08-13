@@ -3,20 +3,14 @@
  */
 var express = require('express'),
     path = require('path'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    responseTime = require('response-time'),
-    logger = require('morgan');
-
+    mongoose = require('mongoose');
 var app = express();
-app.use(logger('dev'));
 app.use('/bower_components',express.static(path.resolve(__dirname,'../','../','bower_components')));
 app.use('/client',express.static(path.resolve(__dirname,'../','client')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : true }));
-app.use(methodOverride('X-HTTP-Method-Override'));
-app.use(methodOverride('_method'));
-app.use(responseTime());
 require('./configs/expressConfigs')(app);
+require('./configs/mongodb')(mongoose,app);
+app.use(require('./utils/middlewares/mongoose'));
+require('./configs/passportConfig')(app.get('db'));
+require('./Api/index')(app);
 require('./Routes')(app);
 module.exports = app;

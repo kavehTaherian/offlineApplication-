@@ -1,0 +1,67 @@
+//
+   Created by Kaveh T a h e r i a n on 02/08/2017.
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title offlineApplication-#{title}
+        meta(http-equiv="X-UA-Compatible",content="IE=edge")
+        meta(name="viewport",content="width=device-width, initial-scale=1")
+        //link(rel="stylesheet",href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        //link(rel="stylesheet",href="/bower_components/bootstrap/dist/css/bootstrap-theme.css")
+        link(rel="stylesheet",href="/client/public/styles/paper.css")
+        link(rel="stylesheet",href="/client/public/styles/main.css")
+        link(rel="stylesheet",href="/bower_components/font-awesome/css/font-awesome.css")
+        link(rel="stylesheet",href="/bower_components/offline/themes/offline-theme-chrome.css")
+        link(rel="stylesheet",href="/bower_components/offline/themes/offline-language-english.css")
+        link(rel="stylesheet",href="/bower_components/toastr/toastr.css")
+    body
+        nav.navbar.navbar-default
+            .container.container-fluid
+                // Brand and toggle get grouped for better mobile display
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#') OfflineApp
+                // Collect the nav links, forms, and other content for toggling
+                #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                    form.navbar-form.navbar-left(role='search')
+                        .form-group
+                            input.form-control(type='text', placeholder='Search')
+                        button.btn.btn-default(type='submit') Search
+                    ul.nav.navbar-nav.navbar-right
+                      if(user)
+                        li(class='dropdown open')
+                            a(href='#',class='dropdown-toggle' data-toggle='dropdown',role='button',aria-haspopup="true",aria-expanded='false')=user.email
+                                span(class='caret')
+                            ul(class='dropdown-menu',role='menu')
+                                li
+                                    a(href='/account/users/profile') Profile
+                                li
+                                    a(href='/account/logout') Logout
+                      else
+                        li
+                            a(href='/account/signup') Register
+                        li
+                            a(href='/account/signin') Login
+                // /.navbar-collapse
+            // /.container-fluid
+        .container
+            .alert.offline.alert-danger Offline
+            .alert.online.alert-success Online
+        div.container
+            block contents
+        script(src="/bower_components/jquery/dist/jquery.js")
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+        script(src="/bower_components/offline/offline.js")
+        script(src="/bower_components/offlinejs-simulate-ui/offline-simulate-ui.min.js")
+        script(src="/bower_components/lodash/dist/lodash.js")
+        script(src="/bower_components/toastr/toastr.js")
+        script(src="/bower_components/angular/angular.js")
+        hr
+        footer
+            span=Date.now()

@@ -1,0 +1,71 @@
+//
+   Created by Kaveh T a h e r i a n  on 31/07/2017.
+extends shared/layout
+block contents
+    form.form-horizontal(action="/account/signup",method="post")
+        fieldset
+            legend Registration
+            .form-group
+                label.col-lg-2.control-label(for='firstName') First Name
+                .col-lg-10
+                    input#firstName.form-control(type='text',placeholder='firstName',name="firstName")
+            .form-group
+                label.col-lg-2.control-label(for='lastName') Last Name
+                .col-lg-10
+                    input#lastName.form-control(type='text',placeholder='lastName',name="lastName")
+            .form-group
+                label.col-lg-2.control-label(for='inputEmail') Email
+                .col-lg-10
+                    input#inputEmail.form-control(type='text', placeholder='Email',name="email")
+            .form-group
+                label.col-lg-2.control-label(for='password') Password
+                .col-lg-10
+                    input#password.form-control(type='password',placeholder='password',name="password")
+            .form-group
+                label.col-lg-2.control-label(for='confirm') Confirm
+                .col-lg-10
+                    input#confirm.form-control(type='text',placeholder='confirmation',name="confirm")
+            .form-group
+                label.col-lg-2.control-label(for='age') Age
+                .col-lg-10
+                    input#age.form-control(type='number', placeholder='age',name='age')
+            //        .checkbox
+            //            label
+            //                input(type='checkbox')
+            //                |  Checkbox
+            //.form-group
+            //    label.col-lg-2.control-label(for='textArea') Textarea
+            //    .col-lg-10
+            //        textarea#textArea.form-control(rows='3')
+            //        span.help-block
+            //            | A longer block of help text that breaks onto a new line and may extend beyond one line.
+            //.form-group
+            //    label.col-lg-2.control-label Radios
+            //    .col-lg-10
+            //        .radio
+            //            label
+            //                input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+            //                |             Option one is this
+            //        .radio
+            //            label
+            //                input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+            //                |             Option two can be something else
+            //.form-group
+            //    label.col-lg-2.control-label(for='select') Selects
+            //    .col-lg-10
+            //        select#select.form-control
+            //            option 1
+            //            option 2
+            //            option 3
+            //            option 4
+            //            option 5
+            //        br
+            //        select.form-control(multiple='')
+            //            option 1
+            //            option 2
+            //            option 3
+            //            option 4
+            //            option 5
+            .form-group
+                .col-lg-10.col-lg-offset-2
+                    button.btn.btn-primary(type='submit') Register

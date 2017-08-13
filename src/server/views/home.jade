@@ -1,0 +1,8 @@
+//
+   Created by Kaveh T a h e r i a n  on 31/07/2017.
+
+extends shared/layout
+block contents
+    - if(user)
+        h1=user.email
+    div.alert-success Welcome To Offline Application
