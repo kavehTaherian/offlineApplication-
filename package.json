@@ -8,8 +8,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "HOME=$OPENSHIFT_REPO_DIR bower install || bower install"
   },
-  "keywords": [],
-  "author": "Kaveh Taherian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kavehTaherian/offlineApplication-"
+  },
+  "keywords": [
+    "OpenShift",
+    "node",
+    "angular",
+    "offline"
+  ],
+  "author": "kaveh Taherian",
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
