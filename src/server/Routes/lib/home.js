@@ -8,6 +8,8 @@ var express = require('express'),
 module.exports = function () {
     _router.route('/')
         .get(function (req, res, next) {
+            console.log(req.user);
+            console.log(req.isAuthenticate());
             // return res.sendFile(path.resolve(__dirname,'../','../','../','client','index.html'));
             return res.render('home',{ title : 'home' , user : req.user });
         });
