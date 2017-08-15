@@ -18,14 +18,16 @@ module.exports = function () {
                 if(err){
                     return next(err);
                 }else{
-                    req.login(result.user,function (err) {
-                        if(err){
-                            return next(err);
-                        }else{
-                            // req.session.passport.user = result.user;
-                            res.end();
-                            return res.redirect('/');
-                        }
+                    process.nextTick(function () {
+                        req.login(result.user,function (err) {
+                            if(err){
+                                return next(err);
+                            }else{
+                                // req.session.passport.user = result.user;
+                                res.end();
+                                return res.redirect('/');
+                            }
+                        });
                     });
                 }
             });

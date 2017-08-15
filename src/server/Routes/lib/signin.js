@@ -19,8 +19,10 @@ module.exports = function () {
                 if(user == false && info) { return res.json({ unAuthorize : info } ); }
                 if (!user) { return res.redirect('/account/signin'); }
                 req.logIn(user, function(err) {
-                    if (err) { return next(err); }
-                    return res.redirect('/');
+                    process.nextTick(function () {
+                        if (err) { return next(err); }
+                        res.redirect('/');
+                    });
                 });
             })(req, res, next);
 

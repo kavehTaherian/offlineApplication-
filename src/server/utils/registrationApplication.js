@@ -12,7 +12,7 @@ var App = function (args) {
         if(!_.isNull(args.email) &&
             !_.isUndefined(args.email) &&
             args.email.indexOf('@') > -1 &&
-            validator.isEmail(args.email)) { return true; }
+            validator.isEmail(args.email.toString())) { return true; }
         else { return false; }
     };
     var passwordIsValid= function () {
