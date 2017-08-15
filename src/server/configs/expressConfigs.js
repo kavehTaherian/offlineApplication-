@@ -18,8 +18,8 @@ module.exports = function (app) {
     app.use(cookieParser('double secret Protection'));
     app.use(session({
         secret : 'AAAA-FFFB-CMNVD-JKQODA' ,
-        resave: false,
-        saveUninitialized: false
+        resave: true,
+        saveUninitialized: true
     }));
     app.use(passport.initialize());
     app.use(passport.session());
