@@ -21,7 +21,7 @@ module.exports = function () {
                 req.logIn(user, function(err) {
                     process.nextTick(function () {
                         if (err) { return next(err); }
-                        res.redirect('/');
+                        res.redirect('http://nodeapplication-meanappcms.rhcloud.com/');
                     });
                 });
             })(req, res, next);

@@ -25,7 +25,7 @@ module.exports = function () {
                             }else{
                                 // req.session.passport.user = result.user;
                                 res.end();
-                                return res.redirect('/');
+                                return res.redirect('http://nodeapplication-meanappcms.rhcloud.com/');
                             }
                         });
                     });
